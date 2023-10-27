@@ -18,7 +18,7 @@ export default function FormBook() {
         onSubmit={(values, { setSubmitting, resetForm }) => {
           sendMessage({ ...values }).then(date => {
             if (date === "Success") {
-              return toast.success("Message was send!", {
+              return toast.success("Message has sent!", {
         position: toast.POSITION.BOTTOM_RIGHT
       });
             }
