@@ -37,7 +37,7 @@ export default function OurTours() {
     return (
         <section id='tours' className='mt-20 md:mt-[100px]'>
             <div className='md:w-[768px] lg:w-[1024px] mx-auto'>
-                <p className="text-center font-jomolhari font-normal text-[40px] md:text-[64px] mb-16 animate-fade-down animate-once">Our tours</p>
+                <p className="text-center font-jomolhari font-normal text-[40px] md:text-[64px] mb-16">Our tours</p>
             
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -52,14 +52,7 @@ export default function OurTours() {
     1024: {
       slidesPerView: 2,
     }
-  }} 
-                        
-                    
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-             
-      
-            >
+  }}>
                 {tours.map((tour, index) => (<SwiperSlide key={index}><TourItem tour={tour} /></SwiperSlide>  ))}
       
       

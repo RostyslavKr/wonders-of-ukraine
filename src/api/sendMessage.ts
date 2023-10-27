@@ -12,7 +12,7 @@ export const  sendMessage = async(data: IMessageData) => {
             number: data.number,
             message: data.message
         })
-        return response.data;
+        return "Success";
     } catch (error) {
         console.log(error);
     }

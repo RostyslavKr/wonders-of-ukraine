@@ -1,5 +1,7 @@
 "use client"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 import { sendMessage } from '@/api/sendMessage';
 
@@ -9,14 +11,20 @@ const SignupSchema = Yup.object().shape({
   message: Yup.string().required('*Required')
 });
 export default function FormBook() {
-    return (
+    return (<>
         <Formik
         initialValues={{ name: '', number: '', message:'' }}
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          sendMessage({ ...values });
+          sendMessage({ ...values }).then(date => {
+            if (date === "Success") {
+              return toast.success("Message was send!", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+            }
+          } );
           setSubmitting(false);
-      resetForm();
+          resetForm();
         }}
       >
         <Form className='flex flex-col bg-transparent' autoComplete="off">
@@ -39,5 +47,6 @@ export default function FormBook() {
           <button className='font-jomolhari font-normal text-base  py-4 px-12  bg-lime-900 rounded-lg hover:scale-105 focus:scale-105' type='submit'>Send</button>
         </Form>
       </Formik>
+      <ToastContainer /> </>
     )
 }

@@ -46,9 +46,7 @@ export default function Reviews() {
       slidesPerView: 4,
     }
   }} 
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-             
+      
       
             >
                 {reviews.map((review, index) => (<SwiperSlide key={index}><ReviewItem review={review} /></SwiperSlide>  ))}
